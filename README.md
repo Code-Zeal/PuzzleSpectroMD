@@ -140,6 +140,26 @@ Los archivos de fuente almacenados en la carpeta "font" permiten que tu aplicaci
 
 Cuando describas la carpeta "font" en tu tesis, podrías decir algo como: "La carpeta 'font' almacena los archivos de fuente utilizados en mi programa, en este caso, la fuente 'Smart Kid'. Esta carpeta funciona como una biblioteca de fuentes, donde se guardan los archivos necesarios para utilizar y mostrar correctamente la fuente 'Smart Kid' en mi aplicación hecha en Electron. Estos archivos de fuente permiten que la fuente 'Smart Kid' se aplique a diferentes elementos de texto en mi programa, proporcionando un estilo y una identidad visual específicos."
 
+# Problemas durante el desarrollo
+
+## Decisión sobre que plataforma de desarrollo utilizar
+
+Estaban 2 propuestas, electronjs y Tauri, ambas tienen sus ventajas y desventajas, electron es un poco mas pesado porque utiliza Chromium(Javascript) por detrás, a diferencia de Tauri que utiliza el lenguaje de programación Rust, que es un lenguaje de bajo nivel nuevo muy rapido y muy seguro.
+
+Decisión: Elegimos Electron Js por su comunidad y por el tiempo que tiene, leimos que Tauri al ser nuevo no tiene tanto soporte, tiene futuro pero por seguridad y estabilidad decidimos Electron Js por sobre Tauri
+
+## error al navegar entre rutas .html
+
+En electron al utilizar enlaces <a/>  en el href="" la ruta no debe empezar en ./ por ejemplo, esto está mal href="./niveles/Nivel_1/nivel1-1.html" y esta es la forma correcta href="niveles/Nivel_1/nivel1-1.html"
+
+## error a la hora de manipular piezas
+
+pasaba que al tener tantas piezas se volvía un poco complejo ir sacando pieza por pieza e ir separandolas para poder verlas, por lo que se optó por implementar que al seleccionar una pieza esta pasa a estar al frente para poder verla y movilizarla al objetivo correctamente y dar una mejor sensación a la hora de realizar el rompecabezas
+
+## error en el contador
+
+el contador inicia automaticamente al iniciar la partida pero al inicio se muestra una animación que es el rompecabezas desarmandose, en ese tiempo el usuario no puede interactuar con las piezas, asi que para que sea justo se agregó un timeout de 4 segundos antes que inicie el contador, de esta forma el tiempo cronometrado es mas exacto.
+
 # Instrucciones de desarrollo
 
 ## Levantar un proyecto configurado en Electron
@@ -171,6 +191,7 @@ Recuerda que estas instrucciones asumen que el proyecto ya ha sido configurado c
 # Instrucciones de instalación
 
 ## Instalador
+
 
 Ejecutar el archivo .exe instalador, este instala en tu sistema el software y crea un acceso directo en tu escritorio para ejecutarlo cuando quieras
 
